@@ -4,8 +4,11 @@ import 'aos/dist/aos.css';
 import Navber from '../../components/Navber';
 import Form from '../../components/form';
 import CountDown from '../../components/CountDown';
+import { useState } from 'react';
 
 const Home = () => {
+
+    const [disabled, setDisabled] = useState();
 
     Aos.init();
 
@@ -18,7 +21,7 @@ const Home = () => {
                         <div className='' data-aos="slide-down"
                             data-aos-easing="linear"
                             data-aos-duration="1000">
-                            <CountDown />
+                            <CountDown setDisabled={setDisabled} />
                         </div>
                         <div className='text-center text-white xl:w-6/12 lg:w-8/12 lg:mx-auto mx-5'>
                             <h2 className="lg:text-6xl md:text-5xl text-3xl font-semibold mb-5"
@@ -42,7 +45,7 @@ const Home = () => {
                     data-aos="slide-up"
                     data-aos-easing="linear"
                     data-aos-duration="1000">
-                    <Form />
+                    <Form disabled={disabled}/>
                 </div>
             </div>
         </>

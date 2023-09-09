@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 
-const CountDown = () => {
+const CountDown = ({setDisabled}) => {
 
+    
     const [days, setDays] = useState(0);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
 
-    const targetDate = new Date('2023-09-10T00:00:00'); // Replace with your target date and time
+    const targetDate = new Date('2023-09-16T00:00:00'); // Replace with your target date and time
 
 
     useEffect(() => {
@@ -19,8 +20,9 @@ const CountDown = () => {
 
             if (timeDifference <= 0) {
                 clearInterval(interval); // Timer expired
+                setDisabled(true)
                 Swal.fire({
-                    title: 'Time Is Up',
+                    title: 'The form filling time is over',
                     showClass: {
                         popup: 'animate__animated animate__fadeInDown'
                     },
