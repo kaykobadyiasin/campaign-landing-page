@@ -3,6 +3,7 @@ import logo from '../assets/logo/weepoka-logo-white.png'
 import { useState } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
 
 const Navber = () => {
 
@@ -18,15 +19,15 @@ const Navber = () => {
     }
 
     return (
-        <div className='relative'>
+        <div className=''>
             <div className='bg-[#004282]'>
                 <div className='py-8'>
                     <div className='flex items-center justify-between xl:mx-0 lg:mx-5 mx-5'>
                         <div className='xl:w-1/12 lg:w-2/12 md:w-2/12 w-6/12'>
-                            <img src={logo} className='w-full' alt="" />
+                            <Link to='/'><img src={logo} className='w-full' alt="" /></Link>
                         </div>
                         <div onClick={handleRightSideOpen}>
-                            <Icon className='text-white text-3xl cursor-pointer' icon="fluent:line-horizontal-3-20-filled" />
+                            <Icon className='text-white text-3xl hover:scale-110 cursor-pointer' icon="fluent:line-horizontal-3-20-filled" />
                         </div>
                     </div>
                 </div>
@@ -38,7 +39,7 @@ const Navber = () => {
                 data-aos="slide-left" data-aos-offset="300"
                 data-aos-easing="ease-in-out"
                 data-aos-duration="500"
-                className="fixed top-0 right-0 z-40 h-screen p-4 bg-white w-96 dark:bg-gray-800">
+                className="fixed shadow-xl top-0 right-0 z-40 h-screen p-4 bg-white w-96 dark:bg-gray-800">
                 <h5 className="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">Right</h5>
                 <button type="button" className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 right-2.5 inline-flex items-center justify-center dark:hover:text-white" >
                     <Icon onClick={handleRightSideClose} className='text-3xl' icon="radix-icons:cross-circled" />

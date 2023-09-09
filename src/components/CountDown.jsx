@@ -9,7 +9,7 @@ const CountDown = () => {
     const [seconds, setSeconds] = useState(0);
 
     const targetDate = new Date('2023-09-10T00:00:00'); // Replace with your target date and time
-    console.log('targetdate', targetDate)
+
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -33,7 +33,7 @@ const CountDown = () => {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [targetDate]);
 
 
 

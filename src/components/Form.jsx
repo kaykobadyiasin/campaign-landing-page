@@ -2,8 +2,6 @@ import { Icon } from "@iconify/react";
 
 const Form = () => {
 
-
-
     return (
         <div className="mb-20">
             <div className="container mx-auto">
@@ -32,32 +30,32 @@ const Form = () => {
 
                                 <div className="hidden z-10 shadow-lg w-48 bg-white rounded-lg dropdown-content">
                                     <ul className="p-3 space-y-1 text-sm">
-                                        <li for="student-radio">
+                                        <li htmlFor="student-radio">
                                             <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
 
                                                 <input id="student-radio" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label for="student-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Student</label>
+                                                <label htmlFor="student-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Student</label>
                                             </div>
                                         </li>
-                                        <li for="job-holder-radio">
+                                        <li htmlFor="job-holder-radio">
                                             <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
 
                                                 <input id="job-holder-radio" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label for="job-holder-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Job Holder</label>
+                                                <label htmlFor="job-holder-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Job Holder</label>
                                             </div>
                                         </li>
-                                        <li for="freelancer-radio">
+                                        <li htmlFor="freelancer-radio">
                                             <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
 
                                                 <input id="freelancer-radio" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label for="freelancer-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Student</label>
+                                                <label htmlFor="freelancer-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Student</label>
                                             </div>
                                         </li>
-                                        <li for="others-radio">
+                                        <li htmlFor="others-radio">
                                             <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
 
                                                 <input id="others-radio" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label for="others-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Others</label>
+                                                <label htmlFor="others-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Others</label>
                                             </div>
                                         </li>
                                     </ul>
@@ -70,13 +68,13 @@ const Form = () => {
                                 <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                                     <div className="flex items-center pl-3">
                                         <input id="frontend-checkbox" type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none dark:ring-offset-gray-700 dark:border-gray-500" />
-                                        <label for='frontend-checkbox' className="w-full py-3 ml-2 text-lg font-medium text-gray-900 dark:text-gray-300">Frontend Development</label>
+                                        <label htmlFor='frontend-checkbox' className="w-full py-3 ml-2 text-lg font-medium text-gray-900 dark:text-gray-300">Frontend Development</label>
                                     </div>
                                 </li>
                                 <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                                     <div className="flex items-center pl-3">
                                         <input id="backtend-checkbox" type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none dark:ring-offset-gray-700 dark:border-gray-500" />
-                                        <label for='backtend-checkbox' className="w-full py-3 ml-2 text-lg font-medium text-gray-900 dark:text-gray-300">Back End Development</label>
+                                        <label htmlFor='backtend-checkbox' className="w-full py-3 ml-2 text-lg font-medium text-gray-900 dark:text-gray-300">Back End Development</label>
                                     </div>
                                 </li>
                             </ul>
@@ -84,7 +82,7 @@ const Form = () => {
                         <div>
                             <div className="flex items-center gap-2 justify-start my-10">
                                 <input id="link-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:ring-offset-gray-800 focus:outline-none " />
-                                <label for="link-checkbox" className=" text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline">terms and conditions</a> </label>
+                                <label htmlFor="link-checkbox" className=" text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline">terms and conditions</a> </label>
                             </div>
                         </div>
                         <div className="flex justify-end">

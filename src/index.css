@@ -17,3 +17,24 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+
+/* scroll bar style  */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #004282; 
+    border-radius: 10px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #004282; 
+    border-radius: 10px;
+    border: 1px solid white;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #004282; 
+  }
