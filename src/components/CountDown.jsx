@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 
 const CountDown = () => {
@@ -18,6 +19,15 @@ const CountDown = () => {
 
             if (timeDifference <= 0) {
                 clearInterval(interval); // Timer expired
+                Swal.fire({
+                    title: 'Time Is Up',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
                 return;
             }
 
@@ -33,7 +43,7 @@ const CountDown = () => {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [targetDate]);
+    }, []);
 
 
 
