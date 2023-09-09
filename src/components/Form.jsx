@@ -48,7 +48,7 @@ const Form = ({ disabled }) => {
                                             <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
 
                                                 <input id="freelancer-radio" type="radio" disabled={disabled} value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label htmlFor="freelancer-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Student</label>
+                                                <label htmlFor="freelancer-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Flelancer</label>
                                             </div>
                                         </li>
                                         <li htmlFor="others-radio">
