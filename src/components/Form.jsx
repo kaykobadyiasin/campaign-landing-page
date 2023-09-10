@@ -29,33 +29,29 @@ const Form = ({ disabled }) => {
                                 <button disabled={disabled} className="dropbtn border px-3 py-2 h-12 border-slate-300 rounded-md text-lg shadow-sm flex items-center gap-2 w-full" type="button">Select <Icon icon="mingcute:down-fill" /></button>
 
                                 <div className="hidden z-10 shadow-lg w-48 bg-white rounded-lg dropdown-content">
-                                    <ul className="p-3 space-y-1 text-sm">
-                                        <li htmlFor="student-radio">
-                                            <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-
-                                                <input id="student-radio" disabled={disabled} type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label htmlFor="student-radio" disabled={disabled} className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Student</label>
+                                    <ul className=" space-y-1 text-sm">
+                                        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                            <div className="flex items-center pl-3 bg-slate-50 ">
+                                                <input id="student-checkbox" disabled={disabled} type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none dark:ring-offset-gray-700 dark:border-gray-500" />
+                                                <label htmlFor='student-checkbox' className="w-full py-3 ml-2 text-md font-medium text-gray-900 dark:text-gray-300">Student</label>
                                             </div>
                                         </li>
-                                        <li htmlFor="job-holder-radio">
-                                            <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-
-                                                <input id="job-holder-radio" type="radio" disabled={disabled} value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label htmlFor="job-holder-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Job Holder</label>
+                                        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                            <div className="flex items-center pl-3">
+                                                <input id="jobholder-checkbox" disabled={disabled} type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none dark:ring-offset-gray-700 dark:border-gray-500" />
+                                                <label htmlFor='jobholder-checkbox' className="w-full py-3 ml-2 text-md font-medium text-gray-900 dark:text-gray-300">Job Holder</label>
                                             </div>
                                         </li>
-                                        <li htmlFor="freelancer-radio">
-                                            <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-
-                                                <input id="freelancer-radio" type="radio" disabled={disabled} value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label htmlFor="freelancer-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Flelancer</label>
+                                        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                            <div className="flex items-center pl-3 bg-slate-50">
+                                                <input id="frelancer-checkbox" disabled={disabled} type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none dark:ring-offset-gray-700 dark:border-gray-500" />
+                                                <label htmlFor='frelancer-checkbox' className="w-full py-3 ml-2 text-md font-medium text-gray-900 dark:text-gray-300">Freelancer</label>
                                             </div>
                                         </li>
-                                        <li htmlFor="others-radio">
-                                            <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-
-                                                <input id="others-radio" type="radio" disabled={disabled} value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
-                                                <label htmlFor="others-radio" className="w-full ml-2 text-md font-medium text-gray-900 rounded dark:text-gray-300">Others</label>
+                                        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                            <div className="flex items-center pl-3">
+                                                <input id="Other-checkbox" disabled={disabled} type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none dark:ring-offset-gray-700 dark:border-gray-500" />
+                                                <label htmlFor='Other-checkbox' className="w-full py-3 ml-2 text-md font-medium text-gray-900 dark:text-gray-300">Others</label>
                                             </div>
                                         </li>
                                     </ul>
