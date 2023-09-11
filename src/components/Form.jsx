@@ -5,11 +5,10 @@ import Swal from 'sweetalert2'
 const Form = ({ disabled }) => {
 
     const [selectedValue, setSelectedValue] = useState('');
-    const { control, handleSubmit, setValue, reset } = useForm();
+    const { control, handleSubmit, setValue, formState: { errors }, reset } = useForm();
 
     // form submit 
     const onSubmit = async (data) => {
-
         try {
             const response = await fetch('http://localhost:3001/send-email', {
                 method: 'POST',
@@ -27,11 +26,22 @@ const Form = ({ disabled }) => {
                     showConfirmButton: false,
                     timer: 3000
                 })
+                reset();
             } else {
                 console.error('Email not sent');
+                Swal.fire(
+                    '!Somthing wrong',
+                    'Your submition not complete',
+                    'error'
+                )
             }
         } catch (error) {
             console.error('Error sending email:', error);
+            Swal.fire(
+                '!Somthing wrong',
+                'Your submition not complete',
+                'error'
+            )
         }
     };
 
@@ -41,6 +51,7 @@ const Form = ({ disabled }) => {
             <div className="container mx-auto">
                 <div className="max-w-3xl lg:mx-auto py-5 px-10 bg-white rounded-lg shadow-lg mx-5">
                     <form onSubmit={handleSubmit(onSubmit)} className="my-5 space-y-6">
+                        {/* name  */}
                         <label className="block">
                             <span className="block text-md font-medium text-black">Name*</span>
                             <Controller
@@ -57,6 +68,8 @@ const Form = ({ disabled }) => {
                                 )}
                             />
                         </label>
+
+                        {/* email  */}
                         <label className="block">
                             <span className="block text-md font-medium text-black">Email*</span>
                             <Controller
@@ -72,6 +85,8 @@ const Form = ({ disabled }) => {
                                 )}
                             />
                         </label>
+
+                        {/* phone  */}
                         <label className="block">
                             <span className="block text-md font-medium text-black">Phone*</span>
                             <Controller
@@ -87,7 +102,9 @@ const Form = ({ disabled }) => {
                                 )}
                             />
                         </label>
+
                         <div className="flex md:flex-nowrap flex-wrap justify-between gap-5">
+                            {/* project category  */}
                             <label className="w-full">
                                 <span className="block text-md font-medium text-black">Project Category*</span>
                                 <Controller
@@ -102,6 +119,8 @@ const Form = ({ disabled }) => {
                                     )}
                                 />
                             </label>
+
+                            {/* Occupation */}
                             <Controller
                                 name="occupation"
                                 control={control}
@@ -116,18 +135,18 @@ const Form = ({ disabled }) => {
                                             className="dropbtn border placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 px-3 py-2 h-12 border-slate-300 rounded-md text-lg shadow-sm flex items-center gap-2 w-full"
                                         >
                                             <option value="">Select</option>
-                                            <option value="student">Student</option>
-                                            <option value="jobholder">Job Holder</option>
-                                            <option value="freelancer">Freelancer</option>
-                                            <option value="other">Others</option>
+                                            <option value="Student">Student</option>
+                                            <option value="Job Holder">Job Holder</option>
+                                            <option value="Freelancer">Freelancer</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>
                                 )}
                             />
-
                         </div>
-                        <div>
 
+                        {/* subject category and subject  */}
+                        <div>
                             <div className="flex gap-5 justify-between md:flex-nowrap flex-wrap">
                                 <div className="w-full">
                                     <span className="block text-md font-medium mb-1 text-black">Subject Category*</span>
@@ -202,6 +221,8 @@ const Form = ({ disabled }) => {
 
                             </div>
                         </div>
+
+                        {/* rolls  */}
                         <div>
                             <Controller
                                 name="agree"
@@ -224,7 +245,6 @@ const Form = ({ disabled }) => {
                                     </div>
                                 )}
                             />
-
                         </div>
                         <div className="flex justify-end">
                             <button type="submit" disabled={disabled} className="btn bg-[#004282] px-5 py-3 text-white rounded-md">Submit</button>
