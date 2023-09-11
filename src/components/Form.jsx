@@ -220,7 +220,13 @@ const Form = ({ disabled }) => {
                                 </div>
 
                             </div>
+                            <div className="my-5">
+                                {(selectedValue == 'Front-end Design/Development') ? <><span><b>Front-end Design/Development:</b> Lorem Ipsum is simply dummy text of the printing and date. when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></> : <></>}
+
+                                {(selectedValue == 'Full-Stack Development') ? <><span><b>Full-Stack Development:</b> Lorem Ipsum is simply dummy text of the printing and date. when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></> : <></>}
+                            </div>
                         </div>
+
 
                         {/* rolls  */}
                         <div>
