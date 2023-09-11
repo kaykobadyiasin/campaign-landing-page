@@ -1,17 +1,15 @@
-import { Icon } from "@iconify/react";
+import { useState } from "react";
 import { useForm, Controller } from 'react-hook-form';
+import Swal from 'sweetalert2'
 
 const Form = ({ disabled }) => {
 
-    const { control, handleSubmit, reset } = useForm();
+    const [selectedValue, setSelectedValue] = useState('');
+    const { control, handleSubmit, setValue, reset } = useForm();
 
     // form submit 
     const onSubmit = async (data) => {
 
-        // if(data.subjectCategory)
-
-        console.log(data)
-        console.log(data.subjectCategory)
         try {
             const response = await fetch('http://localhost:3001/send-email', {
                 method: 'POST',
@@ -22,8 +20,13 @@ const Form = ({ disabled }) => {
             });
 
             if (response.status === 200) {
-                console.log('Email sent successfully');
-                reset()
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Your submition completed',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
             } else {
                 console.error('Email not sent');
             }
@@ -33,8 +36,6 @@ const Form = ({ disabled }) => {
     };
 
 
-
-
     return (
         <div className="mb-20">
             <div className="container mx-auto">
@@ -42,7 +43,6 @@ const Form = ({ disabled }) => {
                     <form onSubmit={handleSubmit(onSubmit)} className="my-5 space-y-6">
                         <label className="block">
                             <span className="block text-md font-medium text-black">Name*</span>
-
                             <Controller
                                 name="name"
                                 control={control}
@@ -56,11 +56,9 @@ const Form = ({ disabled }) => {
                                         placeholder="example: Jhon Die" className="mt-1 block w-full px-3 py-2 bg-white border h-12 border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500" />
                                 )}
                             />
-
                         </label>
                         <label className="block">
                             <span className="block text-md font-medium text-black">Email*</span>
-
                             <Controller
                                 name="email"
                                 control={control}
@@ -73,7 +71,6 @@ const Form = ({ disabled }) => {
                                         placeholder="example: (example@gmail.com)" className="mt-1 block w-full px-3 py-2 bg-white border h-12 border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500" />
                                 )}
                             />
-
                         </label>
                         <label className="block">
                             <span className="block text-md font-medium text-black">Phone*</span>
@@ -93,7 +90,6 @@ const Form = ({ disabled }) => {
                         <div className="flex md:flex-nowrap flex-wrap justify-between gap-5">
                             <label className="w-full">
                                 <span className="block text-md font-medium text-black">Project Category*</span>
-
                                 <Controller
                                     name="projectCategory"
                                     control={control}
@@ -105,12 +101,11 @@ const Form = ({ disabled }) => {
                                             placeholder="example: (category)" className="mt-1 block w-full px-3 py-2 bg-white border h-12 border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500" />
                                     )}
                                 />
-
                             </label>
                             <Controller
                                 name="occupation"
                                 control={control}
-                                rules={{ required: 'Occupation is required' }}
+                                rules={{ required: 'occupation is required' }}
                                 render={({ field }) => (
                                     <div className="dropdown w-full">
                                         <span className="block text-md font-medium mb-1 text-black">Occupation*</span>
@@ -132,51 +127,86 @@ const Form = ({ disabled }) => {
 
                         </div>
                         <div>
-                            <span className="block text-md font-medium mb-1 text-black">Subject Category*</span>
-                            <Controller
-                                name="subjectCategory"
-                                control={control}
-                                defaultValue={[]} // Set the default value as an empty array
-                                render={({ field }) => (
-                                    <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                            <div className="flex items-center pl-3">
-                                                <input
-                                                    {...field}
-                                                    id="frontend-checkbox"
-                                                    disabled={disabled}
-                                                    type="checkbox"
-                                                    value="frontend" // Set the value to "frontend"
-                                                    className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none dark:ring-offset-gray-700 dark:border-gray-500"
-                                                />
-                                                <label htmlFor="frontend-checkbox" className="w-full py-3 ml-2 text-lg font-medium text-gray-900 dark:text-gray-300">Frontend Development</label>
-                                            </div>
-                                        </li>
-                                        
-                                        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                                            <div className="flex items-center pl-3">
-                                                <input
-                                                    {...field}
-                                                    id="backend-checkbox"
-                                                    disabled={disabled}
-                                                    type="checkbox"
-                                                    value="backend" // Set the value to "backend"
-                                                    className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:outline-none dark:ring-offset-gray-700 dark:border-gray-500"
-                                                />
-                                                <label htmlFor="backend-checkbox" className="w-full py-3 ml-2 text-lg font-medium text-gray-900 dark:text-gray-300">Backend Development</label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                )}
-                            />
 
+                            <div className="flex gap-5 justify-between md:flex-nowrap flex-wrap">
+                                <div className="w-full">
+                                    <span className="block text-md font-medium mb-1 text-black">Subject Category*</span>
+                                    <Controller
+                                        name="subjectCategory"
+                                        control={control}
+                                        rules={{ required: 'Subject Category is required' }}
+                                        render={({ field }) => (
+                                            <select
+                                                {...field}
+                                                // value={selectedValue}
+                                                onChange={(e) => {
+                                                    field.onChange(e)
+                                                    const selectedValue = e.target.value;
+                                                    setValue('subjectCategory', selectedValue);
+                                                    setSelectedValue(selectedValue);
+                                                }}
+                                                disabled={disabled}
+                                                className=" border placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 px-3 py-2 h-12 border-slate-300 rounded-md text-lg shadow-sm flex items-center gap-2 w-full"
+                                            >
+                                                <option value="">Select</option>
+                                                <option value="Front-end Design/Development">Front-end Design/Development</option>
+                                                <option value="Full-Stack Development">Full-Stack Development</option>
+                                            </select>
+                                        )}
+                                    />
+                                </div>
+                                <div className="w-full">
+                                    <span className="block text-md font-medium mb-1 text-black">Subject*</span>
+                                    <Controller
+                                        name="subject"
+                                        control={control}
+                                        rules={{ required: 'SubjectCategory is required' }}
+                                        render={({ field }) => (
+                                            <div className=" flex md:flex-nowrap flex-wrap gap-5 justify-between">
+                                                {(selectedValue == 'Full-Stack Development') ? <select
+                                                    {...field}
+                                                    id="subjectone-select"
+                                                    disabled={disabled}
+                                                    className=" border placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 px-3 py-2 h-12 border-slate-300 rounded-md text-lg shadow-sm flex items-center gap-2 w-full"
+                                                >
+                                                    <option value="">Select</option>
+                                                    <option value="eCommerce website">eCommerce website</option>
+                                                    <option value="Educational website">Educational website</option>
+                                                    <option value="News-portal website">News-portal website</option>
+                                                    <option value="Job Portal Website">Job Portal Website</option>
+                                                    <option value="Travel & Tourism Website">Travel & Tourism Website</option>
+                                                    <option value="Rental Website">Rental Website</option>
+                                                    <option value="Food Delivery Website">Food Delivery Website</option>
+                                                </select>
+                                                    :
+                                                    <select
+                                                        {...field}
+                                                        id="subject-select"
+                                                        disabled={disabled}
+                                                        className=" border placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 px-3 py-2 h-12 border-slate-300 rounded-md text-lg shadow-sm flex items-center gap-2 w-full"
+                                                    >
+                                                        <option value="">Select</option>
+                                                        <option value="Business Website">Business website</option>
+                                                        <option value="Blog website">Blog website</option>
+                                                        <option value="Nonprofit/NGO website">Nonprofit/NGO website</option>
+                                                        <option value="Restaurants Website">Restaurants Website</option>
+                                                        <option value="Travel website">Travel website</option>
+                                                        <option value="News and magazine website">News and magazine website</option>
+                                                        <option value="Entertainment or media website">Entertainment or media website</option>
+                                                    </select>
+                                                }
+                                            </div>
+                                        )}
+                                    />
+                                </div>
+
+                            </div>
                         </div>
-                            {/* {(frontendId.checked == true) ? <><span>front end Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, odio?</span></> : <></>} */}
-                            {/* {backendId.checked ? <><span>backend end Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, odio?</span></> : <></>} */}
                         <div>
                             <Controller
                                 name="agree"
                                 control={control}
+                                rules={{ required: 'agree is required' }}
                                 defaultValue={false} // Set the default value to false (unchecked)
                                 render={({ field }) => (
                                     <div className="flex items-center gap-2 justify-start my-10">
