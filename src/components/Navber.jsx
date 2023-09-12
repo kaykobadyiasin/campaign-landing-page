@@ -40,10 +40,10 @@ const Navber = () => {
                 data-aos-easing="ease-in-out"
                 data-aos-duration="500"
                 className="fixed shadow-xl top-0 right-0 z-40 h-screen p-4 bg-white w-96 dark:bg-gray-800">
-                <h5 className="inline-flex items-center mb-4 text-2xl font-semibold text-gray-500 dark:text-gray-400">Contact Info</h5>
                 <button type="button" className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 right-2.5 inline-flex items-center justify-center dark:hover:text-white" >
                     <Icon onClick={handleRightSideClose} className='text-3xl' icon="radix-icons:cross-circled" />
                 </button>
+                <h5 className="inline-flex items-center mb-4 text-2xl font-semibold">Contact Info</h5>
                 <p className='text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 <div className='py-5 space-y-4'>
                     <div>

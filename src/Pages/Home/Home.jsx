@@ -20,7 +20,7 @@ const Home = () => {
                         <div>
                             <Navber />
                         </div>
-                        <div className='pt-32 pb-16 space-y-10'>
+                        <div className='lg:mt-32 md:mt-20 mt-10 pb-40 space-y-10'>
                             <div className='' data-aos="slide-down"
                                 data-aos-easing="linear"
                                 data-aos-duration="1000">
@@ -42,15 +42,15 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='w-full h-52 relative bg-[#004282]'>
-                        <div className='absolute left-0 right-0 top-0'
+                </div>
+                    <div className='w-full min-h-screen relative'>
+                        <div className='absolute left-0 right-0 -top-28'
                             data-aos="slide-up"
                             data-aos-easing="linear"
                             data-aos-duration="1000">
                             <Form disabled={disabled} />
                         </div>
                     </div>
-                </div>
             </div>
         </>
     );

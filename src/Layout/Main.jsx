@@ -5,7 +5,7 @@ const Main = () => {
     return (
         <div>
             <Outlet></Outlet>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </div>
     );
 };
