@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { useForm, Controller } from 'react-hook-form';
+import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 const Form = ({ disabled }) => {
 
     const [selectedValue, setSelectedValue] = useState('');
-    const { control, handleSubmit, setValue, formState: { errors }, reset } = useForm();
+    const [isLoading, setIsLoading] = useState(false);
+    const { control, handleSubmit, setValue, formState: { errors }, reset, watch } = useForm();
+
+    const isAgreeChecked = watch('agree', false);
+
 
     // form submit 
     const onSubmit = async (data) => {
+        setIsLoading(true)
         try {
             const response = await fetch('http://localhost:3001/send-email', {
                 method: 'POST',
@@ -42,8 +48,11 @@ const Form = ({ disabled }) => {
                 'Your submition not complete',
                 'error'
             )
+        } finally {
+            setIsLoading(false);
         }
     };
+
 
 
     return (
@@ -104,22 +113,6 @@ const Form = ({ disabled }) => {
                         </label>
 
                         <div className="flex md:flex-nowrap flex-wrap justify-between gap-5">
-                            {/* project category  */}
-                            <label className="w-full">
-                                <span className="block text-md font-medium text-black">Project Category*</span>
-                                <Controller
-                                    name="projectCategory"
-                                    control={control}
-                                    rules={{ required: 'Project Category is required' }}
-                                    render={({ field }) => (
-                                        <input type="text"
-                                            {...field}
-                                            disabled={disabled}
-                                            placeholder="example: (category)" className="mt-1 block w-full px-3 py-2 bg-white border h-12 border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500" />
-                                    )}
-                                />
-                            </label>
-
                             {/* Occupation */}
                             <Controller
                                 name="occupation"
@@ -143,37 +136,37 @@ const Form = ({ disabled }) => {
                                     </div>
                                 )}
                             />
+                            <div className="w-full">
+                                <span className="block text-md font-medium mb-1 text-black">Subject Category*</span>
+                                <Controller
+                                    name="subjectCategory"
+                                    control={control}
+                                    rules={{ required: 'Subject Category is required' }}
+                                    render={({ field }) => (
+                                        <select
+                                            {...field}
+                                            // value={selectedValue}
+                                            onChange={(e) => {
+                                                field.onChange(e)
+                                                const selectedValue = e.target.value;
+                                                setValue('subjectCategory', selectedValue);
+                                                setSelectedValue(selectedValue);
+                                            }}
+                                            disabled={disabled}
+                                            className=" border placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 px-3 py-2 h-12 border-slate-300 rounded-md text-lg shadow-sm flex items-center gap-2 w-full"
+                                        >
+                                            <option value="">Select</option>
+                                            <option value="Front-end Design/Development">Front-end Design/Development</option>
+                                            <option value="Full-Stack Development">Full-Stack Development</option>
+                                        </select>
+                                    )}
+                                />
+                            </div>
                         </div>
 
                         {/* subject category and subject  */}
                         <div>
-                            <div className="flex gap-5 justify-between md:flex-nowrap flex-wrap">
-                                <div className="w-full">
-                                    <span className="block text-md font-medium mb-1 text-black">Subject Category*</span>
-                                    <Controller
-                                        name="subjectCategory"
-                                        control={control}
-                                        rules={{ required: 'Subject Category is required' }}
-                                        render={({ field }) => (
-                                            <select
-                                                {...field}
-                                                // value={selectedValue}
-                                                onChange={(e) => {
-                                                    field.onChange(e)
-                                                    const selectedValue = e.target.value;
-                                                    setValue('subjectCategory', selectedValue);
-                                                    setSelectedValue(selectedValue);
-                                                }}
-                                                disabled={disabled}
-                                                className=" border placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 px-3 py-2 h-12 border-slate-300 rounded-md text-lg shadow-sm flex items-center gap-2 w-full"
-                                            >
-                                                <option value="">Select</option>
-                                                <option value="Front-end Design/Development">Front-end Design/Development</option>
-                                                <option value="Full-Stack Development">Full-Stack Development</option>
-                                            </select>
-                                        )}
-                                    />
-                                </div>
+                            <div className="">
                                 <div className="w-full">
                                     <span className="block text-md font-medium mb-1 text-black">Subject*</span>
                                     <Controller
@@ -242,18 +235,17 @@ const Form = ({ disabled }) => {
                                             id="link-checkbox"
                                             type="checkbox"
                                             disabled={disabled}
-                                            value="agree"
                                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:ring-offset-gray-800 focus:outline-none"
                                         />
                                         <label htmlFor="link-checkbox" className="text-sm font-medium text-gray-900 dark:text-gray-300">
-                                            I agree with the <a href="#" className="text-blue-600 dark:text-blue-500 hover:underline">terms and conditions</a>
+                                            I agree with the <Link target="blank" to="/termsCondition" className="text-blue-600 dark:text-blue-500 hover:underline">terms and conditions</Link>
                                         </label>
                                     </div>
                                 )}
                             />
                         </div>
                         <div className="flex justify-end">
-                            <button type="submit" disabled={disabled} className="btn bg-[#004282] px-5 py-3 text-white rounded-md">Submit</button>
+                            <button type="submit" disabled={disabled || !isAgreeChecked} className={`btn bg-[#004282] px-5 py-3 text-white rounded-md ${disabled || !isAgreeChecked ? 'opacity-50 cursor-not-allowed' : ''}`}>{isLoading ? "Submitting..." : "Submit"}</button>
                         </div>
                     </form>
                 </div>

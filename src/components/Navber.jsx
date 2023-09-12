@@ -40,13 +40,27 @@ const Navber = () => {
                 data-aos-easing="ease-in-out"
                 data-aos-duration="500"
                 className="fixed shadow-xl top-0 right-0 z-40 h-screen p-4 bg-white w-96 dark:bg-gray-800">
-                <h5 className="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">Right</h5>
+                <h5 className="inline-flex items-center mb-4 text-2xl font-semibold text-gray-500 dark:text-gray-400">Contact Info</h5>
                 <button type="button" className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 right-2.5 inline-flex items-center justify-center dark:hover:text-white" >
                     <Icon onClick={handleRightSideClose} className='text-3xl' icon="radix-icons:cross-circled" />
                 </button>
-                <p className='text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nostrum illo delectus voluptate praesentium incidunt ratione aliquid dolorum? Veniam, aliquid illum.</p>
+                <p className='text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div className='py-5 space-y-4'>
+                    <div>
+                        <p className='flex items-center gap-3 mt-2'><Icon icon="solar:phone-bold" className='text-2xl text-[#004282]' /> +880 1606-104415</p>
+                    </div>
+                    <div>
+                        <p className='flex items-center gap-3 mt-2'><Icon icon="bxl:gmail" className='text-2xl text-[#004282]' /><span className=''>contact@weepoka.com</span></p>
+                    </div>
+                    <div>
+                        <Link target='blank' to='https://www.facebook.com/weepoka.digital' className='flex items-center gap-3 mt-2'><Icon icon="ic:baseline-facebook" className='text-2xl text-[#004282]' /><span className='text-blue-700'>Facebook</span></Link>
+                    </div>
+                    <div>
+                        <Link target='blank' to='https://weepoka.com/' className='flex items-center gap-3 mt-2'><Icon icon="mdi:web" className='text-2xl text-[#004282]' /> <span className='text-blue-700'>weepoka.com</span></Link>
+                    </div>
+                </div>
                 <div className="grid grid-cols-2 gap-4 mt-5">
-                    <a onClick={handleRightSideClose} href="#" className="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</a>
+                    <button onClick={handleRightSideClose} className="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
                 </div>
             </div> : <></>}
             {/* drawer */}

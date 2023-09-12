@@ -22,14 +22,15 @@ const CountDown = ({setDisabled}) => {
                 clearInterval(interval); // Timer expired
                 setDisabled(true)
                 Swal.fire({
-                    title: 'The form filling time is over',
+                    title: 'Form submission time is over!',
+                    icon: 'info',
                     showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
+                      popup: 'animate__animated animate__fadeInDown'
                     },
                     hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
+                      popup: 'animate__animated animate__fadeOutUp'
                     }
-                })
+                  })
                 return;
             }
 

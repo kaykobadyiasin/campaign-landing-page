@@ -4,6 +4,7 @@ import {
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import Error from "../Pages/Error";
+import TermsConditions from "../Pages/TermsConditions/TermsConditions";
 
   const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ import Error from "../Pages/Error";
         {
             path: '/',
             element: <Home></Home>
+        },
+        {
+            path: '/termsCondition',
+            element: <TermsConditions/>
         },
         {
             path: '*',
